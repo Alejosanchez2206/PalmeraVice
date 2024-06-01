@@ -3,7 +3,6 @@ const {
     Client,
     PermissionFlagsBits,
     ChatInputCommandInteraction,
-    ChannelType,
     EmbedBuilder
 } = require('discord.js');
 
@@ -52,6 +51,7 @@ module.exports = {
             const reportes = interation.options.getNumber('reportes');
 
             const validarPermiso = await permisosSchema.findOne({ guildServidor: interation.guild.id, guildUsuario: interation.user.id });
+            
             if (!validarPermiso) {
                 return interation.reply({ content: 'No tienes permisos para usar este comando', ephemeral: true });
             }

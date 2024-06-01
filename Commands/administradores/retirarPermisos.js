@@ -7,6 +7,7 @@ const {
 } = require('discord.js');
 
 const permisosSchema = require('../../Models/permisos');
+const permisosEspecialSchema = require('../../Models/permisosEspecial');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -29,6 +30,12 @@ module.exports = {
             const { options } = interation;
             const user = options.getUser('user');
 
+            const validarEspecial = await permisosEspecialSchema.findOne({ guildServidor: interation.guild.id, guildUsuario: interation.user.id });
+
+            if (!validarEspecial) {
+                return interation.reply({ content: 'No tienes permisos para usar este comando', ephemeral: true });
+            }
+
             const validarUsuario = await permisosSchema.findOne({ guildServidor: interation.guild.id, guildUsuario: user.id });
 
             if (!validarUsuario) {
@@ -36,7 +43,7 @@ module.exports = {
             }
 
             await permisosSchema.findOneAndDelete({ guildServidor: interation.guild.id, guildUsuario: user.id });
-            interation.reply({ content: `Se retiro el permiso para el usuario ${user.username}`, ephemeral: true });
+            return interation.reply({ content: `Se retiro el permiso para el usuario ${user.username}`, ephemeral: true });
         } catch (err) {
             console.log(err);
         }

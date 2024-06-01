@@ -1,12 +1,7 @@
 const {
     SlashCommandBuilder,
-    Client,
-    PermissionFlagsBits,
     ChatInputCommandInteraction,
-    ChannelType,
     EmbedBuilder,
-    roleMention, 
-    userMention
 } = require('discord.js');
 
 const permisosSchema = require('../../Models/permisos');

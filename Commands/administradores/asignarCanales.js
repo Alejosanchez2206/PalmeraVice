@@ -7,7 +7,7 @@ const {
 } = require('discord.js');
 
 const canalesSchema = require('../../Models/canales');
-
+const permisosEspecialSchema = require('../../Models/permisosEspecial');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('asignar-canal')
@@ -39,6 +39,9 @@ module.exports = {
             const { options } = interation;
             const canal = options.getChannel('canal');
             const tipo = options.getString('tipo');
+            const validaEspecial = await permisosEspecialSchema.findOne({ guildServidor: interation.guild.id, guildUsuario: interation.user.id });
+
+            if (!validaEspecial) { return interation.reply({ content: 'No tienes permisos para usar este comando', ephemeral: true }) }
 
             const validarCanal = await canalesSchema.findOne({ guildServidor: interation.guild.id, TipoCanal: tipo });
 
@@ -53,8 +56,7 @@ module.exports = {
                 TipoCanal: tipo
             });
             await canales.save();
-            interation.reply({ content: 'Se agrego el canal', ephemeral: true });
-
+            return interation.reply({ content: 'Se agrego el canal', ephemeral: true });
 
         } catch (err) {
             console.log(err);

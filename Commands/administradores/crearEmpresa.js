@@ -7,6 +7,7 @@ const {
 } = require('discord.js');
 
 const permisosSchema = require('../../Models/permisos');
+const permisosEspecialSchema = require('../../Models/permisosEspecial');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -27,13 +28,14 @@ module.exports = {
     * @param {Client} client 
     */
     async execute(interation, client) {
-        try{
+        try {
             const { options } = interation;
             const name = options.getString('nombre');
             const role = options.getRole('rol');
-    
-            const validarPermiso = await permisosSchema.findOne({ guildServidor: interation.guild.id, guildUsuario: interation.user.id });
-            if (!validarPermiso) {
+
+            const validarEspecial = await permisosEspecialSchema.findOne({ guildServidor: interation.guild.id, guildUsuario: interation.user.id });
+
+            if (!validarEspecial) {
                 return interation.reply({ content: 'No tienes permisos para usar este comando', ephemeral: true });
             }
 
@@ -51,9 +53,9 @@ module.exports = {
                     }
                 ]
             })
-    
+
             const canales = ['ɪɴꜰᴏ', 'ᴘʀᴇᴄɪᴏꜱ', 'ᴇᴍᴘʟᴇᴀᴅᴏꜱ'];
-    
+
             canales.forEach(async canal => {
                 if (canal === 'ᴇᴍᴘʟᴇᴀᴅᴏꜱ') {
                     await interation.guild.channels.create({
@@ -91,7 +93,7 @@ module.exports = {
                         ]
                     })
                 }
-    
+
             })
             await interation.guild.channels.create({
                 name: 'ᴇᴍᴘʀᴇꜱᴀ ᴠᴄ',
@@ -107,16 +109,15 @@ module.exports = {
                     }, {
                         id: '1078136945751883916',
                         allow: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.Connect, PermissionFlagsBits.Speak]
-    
+
                     }
                 ]
             })
-            await interation.reply({ content: 'Se ha creado la empresa', ephemeral: true });
-    
+            return interation.reply({ content: 'Se ha creado la empresa', ephemeral: true });
 
-        }catch(err){
+        } catch (err) {
             console.log(err);
         }
-       
+
     }
 }
