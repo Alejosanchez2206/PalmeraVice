@@ -8,7 +8,7 @@ const permisosCommand = require('../../Models/permisosCommand');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('fake-message')
+        .setName('fake-messages')
         .setDescription('Envia un fake message')
         .addUserOption(option => option
             .setName('user')
@@ -28,7 +28,7 @@ module.exports = {
             const { options } = interation;
             const user = options.getUser('user');
             const message = options.getString('message');
-            
+
             const validarPermisos = await permisosCommand.findOne({ guildServidor: interation.guild.id, guildUsuario: interation.user.id, CommandPermiso: 'FakeMessage' });
 
             if (!validarPermisos) {
