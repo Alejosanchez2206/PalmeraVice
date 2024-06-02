@@ -60,9 +60,9 @@ module.exports = {
                 .setTitle(`**ANTECEDENTE**`)
                 .setColor('Red')
                 .addFields([
-                    { name: 'Oficial', value: `${interation.user}` },
-                    { name: 'Preso ', value: `${user}` },
-                    { name: 'Cargo', value: `${cargo}` }
+                    { name: '**Oficial**', value: `${interation.user}` },
+                    { name: '**Preso**', value: `${user}` },
+                    { name: '**Cargo**', value: `${cargo}` }
                 ])
                 .setImage(fotos.url)
                 .setThumbnail(`https://images-ext-1.discordapp.net/external/amkx-RBT1tRCtsj9Ce_VsenmXLoKiBiosGKBDmQwUSY/https/i.ibb.co/F7cq51h/LOGOF.png?format=webp&quality=lossless`)
