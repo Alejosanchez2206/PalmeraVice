@@ -26,6 +26,7 @@ module.exports = {
                 { name: 'anuncio', value: 'Anuncio' },
                 { name: 'AvisarAntiRol', value: 'Avisar anti rol' },
                 { name: 'AvisarantiSancion', value: 'Avisar en anti sancion' },
+                { name: 'AvisarSancionOrg', value: 'AvisancionOrg' },
             )
         ),
 

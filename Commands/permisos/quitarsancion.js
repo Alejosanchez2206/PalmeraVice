@@ -32,6 +32,7 @@ module.exports = {
             const rol = interation.options.getRole('rol');
 
             const validarPermiso = await permisosSchema.findOne({ guildServidor: interation.guild.id, guildUsuario: interation.user.id });
+            
             if (!validarPermiso) {
                 return interation.reply({ content: 'No tienes permisos para usar este comando', ephemeral: true });
             }

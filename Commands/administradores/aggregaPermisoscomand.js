@@ -22,8 +22,10 @@ module.exports = {
             .setRequired(true)
             .addChoices(
                 { name: 'AntecedentesPolicias', value: 'AntecedentesPolicias' },
-                { name: 'FakeMessage', value: 'FakeMessage' },
                 { name: 'Sanciones', value: 'Sanciones' },
+                { name: 'ListarFacturas', value: 'ListarFacturas' },
+                { name: 'SancionOrg', value: 'SancionOrg' },
+                { name: 'ResumenSancionOrg', value: 'ResumenSancionOrg' }
             )
         ),
 
