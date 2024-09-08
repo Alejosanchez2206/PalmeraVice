@@ -70,7 +70,7 @@ module.exports = {
                 Admin: interation.user.username,
                 IdAdmin: interation.user.id,
                 DetaillAdmin : interation.user,
-                Razón: razon,
+                Razon: razon,
                 Reportes: reportes,
                 Aviso: rol.name,
                 IdAviso: rol.id,
@@ -110,6 +110,5 @@ module.exports = {
             console.log(err);
         }
     }
-
 
 }

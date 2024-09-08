@@ -44,7 +44,7 @@ module.exports = {
                 .setColor('Blue')
                 .addFields(sanciones.map(sancion => ({
                     name: `Rol: ${sancion.Aviso}`,
-                    value: `Admin: ${sancion.Admin}\nRazon: ${sancion.Razón}\nReportes: ${sancion.Reportes}\nObservaciones: ${sancion.Observaciones}`
+                    value: `Admin: ${sancion.Admin}\nRazon: ${sancion.Razon}\nReportes: ${sancion.Reportes}\nObservaciones: ${sancion.Observaciones}`
                 })))
                 .setThumbnail(`https://images-ext-1.discordapp.net/external/amkx-RBT1tRCtsj9Ce_VsenmXLoKiBiosGKBDmQwUSY/https/i.ibb.co/F7cq51h/LOGOF.png?format=webp&quality=lossless` )
                 .setFooter({ text: `Palmera Vice | ${obtenerAno}` })

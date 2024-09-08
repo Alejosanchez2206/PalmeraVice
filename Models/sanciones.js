@@ -8,7 +8,7 @@ const sancionesSchema = new Schema({
     Admin: String,
     IdAdmin: String,
     DetaillAdmin : Object,
-    Razón: String,
+    Razon: String,
     Reportes: Number,
     Aviso: String,
     IdAviso: String,
